@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+stylelint 'src/**/*.css' userChrome.css
+
+if command -v shellcheck > /dev/null 2>&1
+then
+	shellcheck bin/*
+else
+	echo 'Skipping shellcheck'
+fi

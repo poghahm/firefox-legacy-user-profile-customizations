@@ -1,0 +1,30 @@
+/* MAGIC:Aing1poghahm2ji3NoevaiLuocie3hij */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#whats-new-menu-button {
+	display: none !important;
+}
+
+#tracking-protection-icon-animatable-image {
+	background-image: url(chrome://browser/skin/tracking-protection.svg) !important;
+}
+
+#downloads-button[attention="success"]
+	> .toolbarbutton-badge-stack
+	> #downloads-indicator-anchor
+	> #downloads-indicator-icon,
+#downloads-button[attention="success"]
+	> .toolbarbutton-badge-stack
+	> #downloads-indicator-anchor
+	> #downloads-indicator-progress-outer {
+	fill: inherit !important;
+}
+
+label.toolbarbutton-badge[value="NEW"] {
+       display: none !important;
+}
+
+#navigator-toolbox[inFullscreen] {
+	display: none !important;
+}

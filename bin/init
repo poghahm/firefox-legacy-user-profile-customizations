@@ -1,0 +1,51 @@
+#!/bin/sh
+set -eu
+
+main()
+{
+	test $# -eq 1 || nope
+	test -d "$1" || nope
+	set -- "$1"/.Aing1poghahm2ji3NoevaiLuocie3hij
+	echo "Touching `shellquote "$1"`"
+	touch "$1"
+}
+
+nope()
+{
+	usage >&2
+	exit 1
+}
+
+usage()
+{
+	echo 'Usage:'
+	echo '  ./run bin/init PROFILE_DIR'
+	echo
+	echo 'Examples:'
+
+	set -- false
+
+	for i in \
+		"$HOME"/Library/Application\ Support/Firefox/Profiles/*.* \
+		"$HOME"/.mozilla/firefox/*.*
+	do
+		if test -d "$i"
+		then
+			set -- true
+			echo "  ./run bin/init `shellquote "$i"`"
+		fi
+	done
+
+	if ! $1
+	then
+		echo '  No Firefox profile directories found'
+	fi
+}
+
+shellquote()
+{
+	printf -- '%s\0' "$1" |
+		awk 'BEGIN{RS="\0"}{gsub(/[^0-9A-Za-z\/_.-]/,"\\\\&")}1'
+}
+
+main "$@"

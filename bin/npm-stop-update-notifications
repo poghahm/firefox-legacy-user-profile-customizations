@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+set -- "$HOME"/.config/configstore/update-notifier-npm.json
+
+if ! test -f "$1"
+then
+	echo "Writing $1"
+	mkdir -p "`dirname "$1"`"
+	echo '{"optOut":true}' > "$1"
+else
+	echo "Skipping $1"
+	exit 1
+fi

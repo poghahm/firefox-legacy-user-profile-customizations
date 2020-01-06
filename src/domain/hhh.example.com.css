@@ -1,0 +1,21 @@
+/* stylelint-disable selector-type-no-unknown */
+
+.annotation {
+	display: none !important;
+}
+
+.ytp-chrome-top-buttons {
+	display: none !important;
+}
+
+.ytp-ce-element {
+	display: none !important;
+}
+
+#spinnerContainer {
+	display: none !important;
+}
+
+ytd-popup-container {
+	display: none !important;
+}

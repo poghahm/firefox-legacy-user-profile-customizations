@@ -1,0 +1,10 @@
+html,
+body {
+	height: initial !important;
+	overflow-y: initial !important;
+}
+
+body,
+#wrapper {
+	position: initial !important;
+}

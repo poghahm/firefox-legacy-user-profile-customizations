@@ -1,0 +1,55 @@
+#!/bin/sh
+set -eu
+
+main()
+{
+	stylesheet > userContent.css
+}
+
+stylesheet()
+{
+	echo '/* MAGIC:Aing1poghahm2ji3NoevaiLuocie3hij */'
+	echo
+	sources | each rule | minify | sort
+}
+
+sources()
+{
+	find src -type f -name '*.css'
+}
+
+each()
+(
+	while read -r
+	do
+		"$@" "$REPLY"
+	done
+)
+
+rule()
+{
+	echo '@-moz-document'
+	printf '%s\n' "$1" | matcher
+	echo '{'
+	cat "$1"
+	echo '}'
+}
+
+matcher()
+{
+	perl -pl \
+		-e 's|^src/||;' \
+		-e 's|\.css$||;' \
+		-e 's|/index$|/|;' \
+		-e 's|^(.*?)/(.*?)/(.*)$|$1("$2://$3")| && next;' \
+		-e 's|^(.*?)/(.*)$|$1("$2")| && next;' \
+		;
+}
+
+minify()
+{
+	cleancss -O2 --format breaks:afterBlockEnds=on
+	echo
+}
+
+main

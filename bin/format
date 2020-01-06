@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+prettier --write '{src/**/*.css,userChrome.css,package.json}'
+prettier --write --parser json .stylelintrc
+LC_COLLATE=C sort -o user.js user.js

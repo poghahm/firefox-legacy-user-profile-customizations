@@ -1,0 +1,8 @@
+.a-expander-collapsed-height {
+	max-height: initial !important;
+	height: initial !important;
+}
+
+.a-expander-partial-collapse-header {
+	display: none !important;
+}
